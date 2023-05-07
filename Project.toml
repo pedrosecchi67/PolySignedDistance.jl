@@ -1,0 +1,14 @@
+name = "PolySDF"
+uuid = "8d51ded4-3717-4b51-8789-c29ee14d2ab5"
+authors = ["pedro "]
+version = "0.1.0"
+
+[deps]
+AdaptiveDistanceFields = "a1957575-6125-5dba-8f92-417d2d1f4a46"
+AdaptiveKDTrees = "68d1b5e8-2215-47d8-a76e-d1727e222b22"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[compat]
+julia = "^1.6.0"
