@@ -7,11 +7,11 @@ module PolySDF
 
     using LinearAlgebra
 
-    using StaticArrays
-    using AdaptiveDistanceFields
-    using AdaptiveDistanceFields.RegionTrees
+    # using StaticArrays
+    # using AdaptiveDistanceFields
+    # using AdaptiveDistanceFields.RegionTrees
 
-    export SDFTree, adaptive_distance_field
+    export SDFTree # , adaptive_distance_field
 
     """
     ```
@@ -175,6 +175,7 @@ module PolySDF
     
     end
 
+    #=
     """
     ```
         function adaptive_distance_field(
@@ -259,5 +260,6 @@ module PolySDF
         atol = atol,
         rtol = rtol,
     )
+    =#
 
 end

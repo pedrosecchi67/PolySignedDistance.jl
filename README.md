@@ -75,28 +75,6 @@ dist, proj = tree(x)
 # proj: projection upon surface
 ```
 
-To optimize further, we also provide a function that, using AdaptiveDistanceFields.jl, produces an `AdaptiveDistanceField` object from the tree:
-
-```
-adf = adaptive_distance_field(
-    tree,
-    [0.0, 0.0, 0.0], # hypercube origin
-    [1.0, 1.0, 1.0]; # hypercube widths
-    center = false, # consider the origin is not in the center of the hypercube
-    atol = 1e-2,
-    rtol = 1e-2
-)
-
-dist = adf(x)
-
-# or, alternatively, to obtain it straight from the triangulation:
-
-adf = adaptive_distance_field(
-    points, simplices,
-    origin, widths
-)
-```
-
 ## WARNING!
 
 The SDF estimation algorithms hereby implemented do not yield correct results if zero-area simplices or repeated points are provided. Checking and fixing their existence in the input geometry is up to the user.
