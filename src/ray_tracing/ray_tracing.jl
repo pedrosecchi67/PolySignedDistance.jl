@@ -15,19 +15,21 @@ module RayTracing
     """
     function normal(simplex::AbstractMatrix)
 
+        ϵ = eps(eltype(simplex))
+
         if size(simplex, 1) == 2
             v = simplex[:, 2] .- simplex[:, 1]
 
             return [
                 - v[2], v[1]
-            ] ./ norm(v)
+            ] ./ (norm(v) + ϵ)
         end
 
         p0 = simplex[:, 1]
 
         n = cross(simplex[:, 2] .- p0, simplex[:, 3] .- p0)
 
-        n ./ norm(n)
+        n ./ (norm(v) + ϵ)
 
     end
 

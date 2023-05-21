@@ -96,3 +96,7 @@ adf = adaptive_distance_field(
     origin, widths
 )
 ```
+
+## WARNING!
+
+The SDF estimation algorithms hereby implemented do not yield correct results if zero-area simplices or repeated points are provided. Checking and fixing their existence in the input geometry is up to the user.

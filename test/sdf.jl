@@ -2,20 +2,18 @@ begin
     using .PolySDF
     using LinearAlgebra
 
-    θ = collect(LinRange(0.0, 2 * π, 10000))
+    θ = collect(LinRange(0.0, 2 * π, 10000))[1:(end - 1)]
 
     points = [
         cos.(θ)';
         sin.(θ)'
     ]
-    #=
-    simplices = let i = collect(1:(length(θ) - 1))
+    simplices = let i = collect(1:length(θ))
         [
             i';
-            (i .+ 1)'
+            (circshift(i, -1))'
         ]
     end
-    =#
 
     tree = SDFTree(points) # , simplices)
 
