@@ -99,6 +99,32 @@ module PolySDF
 
     """
     ```
+        SDFTree(points::AbstractMatrix; kwargs...)
+    ```
+
+    Alternative constructor for an SDFTree in two dimensions,
+    which recieves a series of points in 2D space to be joined in a surface.
+
+    Only works for two dimensions!!
+    """
+    function SDFTree(points::AbstractMatrix; kwargs...)
+
+        @assert size(points, 1) == 2 "SDFTree constructor must receive simplex matrix for 3 or higher-dimensional spaces"
+
+        simplices = let inds = collect(1:size(points, 2))
+            permutedims(
+                [
+                        inds (circshift(inds, -1))
+                ]
+            )
+        end
+
+        SDFTree(points, simplices; kwargs...)
+
+    end
+
+    """
+    ```
         function (sdft::SDFTree)(
             x::AbstractVector
         )

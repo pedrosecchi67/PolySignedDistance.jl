@@ -8,21 +8,23 @@ begin
         cos.(θ)';
         sin.(θ)'
     ]
+    #=
     simplices = let i = collect(1:(length(θ) - 1))
         [
             i';
             (i .+ 1)'
         ]
     end
+    =#
 
-    tree = SDFTree(points, simplices)
+    tree = SDFTree(points) # , simplices)
 
     @info "Tree creation - $(length(θ)) simplices on circumpherence"
 
-    @time tree = SDFTree(points, simplices)
-    @time tree = SDFTree(points, simplices)
-    @time tree = SDFTree(points, simplices)
-    @time tree = SDFTree(points, simplices)
+    @time tree = SDFTree(points) # , simplices)
+    @time tree = SDFTree(points) # , simplices)
+    @time tree = SDFTree(points) # , simplices)
+    @time tree = SDFTree(points) # , simplices)
 
     X = rand(2, 10)
     h = 0.01

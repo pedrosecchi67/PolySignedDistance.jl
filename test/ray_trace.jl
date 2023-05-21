@@ -7,12 +7,14 @@ begin
         0.0 1.0 1.0 0.0;
         0.0 0.0 1.0 1.0
     ] .* 0.5
+    #=
     simplices = [
         1 2 3 4;
         2 3 4 1
     ]
+    =#
 
-    surf = Surface(points, simplices)
+    surf = Surface(points) # , simplices) # now the two-dimensional version!
 
     @assert !RayTracing.crosses_simplex([0.5 0.0; 0.5 0.5], [-0.1, 0.2], [1.1, 0.2])
 
@@ -25,20 +27,22 @@ begin
 
     @info "Performance test"
 
-    θ = collect(LinRange(0.0, 2 * π, 10000))
+    θ = collect(LinRange(0.0, 2 * π, 10000))[1:(end - 1)]
 
     points = [
         cos.(θ)';
         sin.(θ)'
     ]
+    #=
     simplices = let i = collect(1:(length(θ) - 1))
         [
             i';
             (i .+ 1)'
         ]
     end
+    =#
 
-    surf = Surface(points, simplices; digits = 7,)
+    surf = Surface(points; digits = 7,)
 
     for nit = 1:10
         x = randn(2)
