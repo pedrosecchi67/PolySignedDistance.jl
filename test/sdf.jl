@@ -1,5 +1,5 @@
 begin
-    using .PolySDF
+    using .PolySignedDistance
     using LinearAlgebra
 
     θ = collect(LinRange(0.0, 2 * π, 10000))[1:(end - 1)]

@@ -1,4 +1,4 @@
-name = "PolySDF"
+name = "PolySignedDistance"
 uuid = "8d51ded4-3717-4b51-8789-c29ee14d2ab5"
 authors = ["pedro "]
 version = "0.1.0"

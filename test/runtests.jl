@@ -1,5 +1,5 @@
-using PolySDF
-using PolySDF: RayTracing
+using PolySignedDistance
+using PolySignedDistance: RayTracing
 
 using Random: seed!
 seed!(42)

@@ -1,4 +1,4 @@
-module PolySDF
+module PolySignedDistance
 
     include("ray_tracing/ray_tracing.jl") # change as necessary
     include("simplex/simplex.jl")
@@ -138,6 +138,29 @@ module PolySDF
         x::AbstractVector
     )
 
+        p, d = projection_and_distance(sdft, x)
+
+        if RayTracing.isin(sdft.surface, x)
+            return (d, p)
+        end
+
+        (
+            - d,
+            p
+        )
+    
+    end
+
+    export projection_and_distance
+
+    """
+    Get projection and (unsigned) distance to a surface. Not necessarily a closed surface
+    """
+    function projection_and_distance(
+        sdft::SDFTree,
+        x::AbstractVector
+    )
+
         _, dmin = KNN.nn(sdft.nn_tree, x)
 
         possible_simps = RangeSearch.find_in_range(
@@ -162,17 +185,7 @@ module PolySDF
             pd[ind]
         end
 
-        if RayTracing.isin(sdft.surface, x)
-            return (
-                d, p
-            )
-        end
-
-        (
-            - d,
-            p
-        )
-    
+        (p, d)
     end
 
     #=

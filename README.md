@@ -1,4 +1,4 @@
-# PolySDF.jl
+# PolySignedDistance.jl
 
 A package for ray tracing/point-in-polygon queries and SDF/Approximate-SDF computation in Julia using N-dimensional triangulated surfaces.
 
@@ -7,7 +7,7 @@ A package for ray tracing/point-in-polygon queries and SDF/Approximate-SDF compu
 To build a surface for ray tracing, one may use:
 
 ```
-using PolySDF: RayTracing
+using PolySignedDistance: RayTracing
 
 surf = RayTracing.Surface(
     points, # matrix (ndims, npts)
@@ -58,7 +58,7 @@ face_inds, int_points = crossed_faces(surf, p1, p2)
 For a signed distance function calculation, one may use:
 
 ```
-using PolySDF
+using PolySignedDistance
 
 tree = SDFTree(
     points,
