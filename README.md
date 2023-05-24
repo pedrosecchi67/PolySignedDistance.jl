@@ -73,6 +73,10 @@ dist, proj = tree(x)
 
 # dist: distance to surface (signed)
 # proj: projection upon surface
+
+# or, for open manifolds without spending time with the point in polygon query
+
+dist, proj = projection_and_distance(tree, x)
 ```
 
 ## WARNING!
